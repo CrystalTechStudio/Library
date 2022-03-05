@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta name="keywords" content="">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" type="image/png" href="../../../favicon.png">
+  <title>META 简易 Markdown 教程 - 晶体图书馆（精简版）</title>
+  <link rel="canonical" href="https://crystaltechstudio.github.io/Library/lite/chapters/META/简易-Markdown-教程.html" />
+  <script>
+    if (!(/bot|google|baidu|bing|msn|teoma|slurp|yandex/i.test(navigator.userAgent))) {
+      if (window.localStorage.getItem('lite') !== 'true') {
+        setTimeout(() => {
+          window.location.href = '/#/chapter/META/简易-Markdown-教程.html';
+        }, 1000);
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <header>
+    <aside>
+      <p>您正在访问适用于不支持 JavaScript 的浏览器的晶体图书馆精简版。精简版会缺少大量功能，如果您在使用现代浏览器，请<a href="../../../#/chapter/META/简易-Markdown-教程.html">点此前往晶体图书馆完整版</a>。</p>
+    </aside>
+    <nav>
+      <p>
+        <placeholder-prev/>
+        <a href="../../entry.html">返回书目选择</a>
+        <a href="../../chapters/META/文章提交流程.html">下一章</a>
+      </p>
+    </nav>
+  </header>
+  <main>
+    <aside><placeholder-authors/></aside>
+    <article>
+      <h1>简易 Markdown 教程</h1>
+<p>Markdown 是一门非常简单的标记语言。其语法非常简单，因此你只需要花费几分钟就能学会。考虑到网上 Markdown 的简单教程不多，这里介绍一下 Markdown 的基本使用。</p>
+<p>Markdown 说白了就是给一个 txt 文本文件加一点井号，星号，或是其他标点符号来告诉阅读器哪几行字是标题，哪几行字要加粗之类的。</p>
+<p>举个例子，如果你有一个文本文件 <code>a.txt</code>：</p>
+<pre><code>陈志鹏爱吃玻璃。他真的非常非常喜欢吃玻璃。对于陈志鹏来说，吃玻璃是这世界上最美好的事情。他完全无法想象没有玻璃吃的生活。
+</code></pre>
+<p>然后你把这个文本文件的后缀改成 <code>.md</code>，使之变成 <code>a.md</code>，恭喜你，你已经创建了一个合法的 Markdown 文件。</p>
+<p>然而，这个 Markdown 文件一点意思也没有，因为它被用户打开的时候，什么特殊样式都没有。为了给你的 Markdown 文档加点特色，接下来讲 4 个最基础的操作。</p>
+<h2>自然段</h2>
+<p>无论是正常写作还是在互联网上写作，你都需要把你的文章分割成多个自然段。如果你要新建一个自然段，请在两段话之间加一个空行。举个例子：</p>
+<pre><code class="language-markdown">陈志鹏爱吃玻璃。他真的非常非常喜欢吃玻璃。对于陈志鹏来说，吃玻璃是这世界上最美好的事情。他完全无法想象没有玻璃吃的生活。
+
+直到有一天，玻璃涨价了。
+</code></pre>
+<p>这样，你就有两个自然段了。请注意一个空行的意思是按两下回车。只按一下回车或者按三下回车都是错误的。</p>
+<p>同时，请务必注意，在规范的写作里是几乎没有纯换行的（换行，但是不进入下一个自然段）。<s>因此，Markdown 不支持纯换行。</s><em>更正：Markdown 支持通过在行尾添加两个空格的方式添加纯换行，但是请避免使用这个功能。</em> 不过无论如何，请永远不要只使用一个回车。<strong>比如下述例子就是错误的，它渲染出来的结果是两行文字会出现在同一行，完全没有换行。</strong></p>
+<pre><code class="language-markdown">陈志鹏爱吃玻璃。
+上一句话是真的。
+</code></pre>
+<h2>加粗</h2>
+<p>如果你想把这句话中的<code>陈志鹏</code>三个字加粗，因为这只是一个平凡的文本文件，所以你肯定不能像 Word 一样去点工具栏上的 <strong>B</strong>。在 Markdown，如果你要加粗一个词，你只需要在这个词两边加上两个星号，比如：</p>
+<pre><code class="language-markdown">**陈志鹏**爱吃玻璃。
+</code></pre>
+<p>这样，当读者在阅读你这篇文章的时候就会发现陈志鹏三个字变成粗体了。怎么样，是不是很简单？</p>
+<h2>标题</h2>
+<p>几乎每篇文章都有标题，甚至子标题。若要添加主标题，请依次输入井号、<strong>空格</strong>、标题内容。举个例子，如果你要添加一个内容为“陈志鹏的兴趣爱好”的标题，你只需要这么写：</p>
+<pre><code class="language-markdown"># 陈志鹏的兴趣爱好
+陈志鹏爱吃玻璃。他真的非常非常喜欢吃玻璃。对于陈志鹏来说，吃玻璃是这世界上最美好的事情。他完全无法想象没有玻璃吃的生活。
+
+直到有一天，玻璃涨价了。
+</code></pre>
+<p>需要注意的是</p>
+<ol>
+<li>井号后面有一个空格。</li>
+<li>标题和正文第一个自然段之间没有空行。</li>
+</ol>
+<p>如果你要添加子标题（比主标题字小一点的标题，用来创建树状结构），你可以使用多个井号。井号数量越多，这个标题越小（最多六个）。举个例子：</p>
+<pre><code class="language-markdown"># 陈志鹏的兴趣爱好
+## 第一章
+陈志鹏爱吃玻璃。他真的非常非常喜欢吃玻璃。对于陈志鹏来说，吃玻璃是这世界上最美好的事情。他完全无法想象没有玻璃吃的生活。
+
+## 第二章
+直到有一天，玻璃涨价了。
+</code></pre>
+<p>需要注意的是，一级标题（<code># 陈志鹏的兴趣爱好</code>）和二级标题（<code>## 第一章</code>）之间没有空行，而二级标题（<code>## 第二章</code>）之前有空行。简而言之就是：</p>
+<ol>
+<li>标题和标题之间没有空行。</li>
+<li>标题过渡到自然段没有空行。</li>
+<li>自然段过渡到标题有空行。</li>
+<li>自然段和自然段之间有空行。</li>
+</ol>
+<p>或者说，只有在每个自然段之后都才有空行。</p>
+<h2>链接</h2>
+<p>有时候你可能会希望添加超链接。在 Markdown 里，超链接的格式长这样：<code>[链接的文字](链接网址)</code>。举个例子：</p>
+<pre><code class="language-markdown">点[这里](https://www.google.com)来打开谷歌。
+</code></pre>
+<p>这样，“这里”两个字就会变成可以点的超链接，点击后就会打开谷歌。</p>
+<h2>总结</h2>
+<p>Markdown 本身功能也不强大，但是除了这边介绍的还是有很多其他功能的。然而学会了这边列出的四个基本功能，编写色情小说应该是足够了。通常情况下，编写 Markdown 使用任何文本编辑器就绰绰有余了。如果你希望可视化，可以试一下以下几个网页版的 Markdown 编辑器：</p>
+<ul>
+<li><a href="https://markdown.lovejade.cn/">Arya - 在线 Markdown 编辑器</a></li>
+<li><a href="https://stackedit.io/">StackEdit</a></li>
+<li><a href="https://dillinger.io/">Dillinger</a></li>
+</ul>
+<p>如果想要学习其他的 Markdown 语法，你可以查看这篇<a href="https://juejin.im/post/5ad6e09e518825557b4d451c">发布在掘金上的教程</a>。</p>
+
+    </article>
+  </main>
+  <footer>
+    <nav>
+      <p>
+        <placeholder-prev/>
+        <a href="../../">返回书目选择</a>
+        <a href="../../chapters/META/文章提交流程.html">下一章</a>
+      </p>
+    </nav>
+    <aside>
+      <h1>转载须知</h1>
+      <p>晶体图书馆内所有文章均以 <a class="regular" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> 协议发布。转载时请注明以下信息：</p>
+      <pre class="wrapping">
+        <code>本文内容摘自晶体图书馆（https://crystaltechstudio.github.io/Library）。<placeholder-authors/>本文以 CC BY-NC-ND 4.0 协议发布，转载请注明上述所有信息。</code>
+      </pre>
+    </aside>
+  </footer>
+</body>
+
+</html>

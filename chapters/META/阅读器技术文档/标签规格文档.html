@@ -1,0 +1,83 @@
+<h1>标签规格文档（TagsSpec.txt）</h1>
+<p>晶体图书馆允许作者给文章添加标签（Tag）。标签可以帮助查找或推荐文章。为了使标签更统一，晶体图书馆预先制定了一系列可能会用到的标签。所有标签，以及它们的定义都被写入了这个标签规格文档中。该文件位于项目根目录下。文件名是 <code>TagsSpec.txt</code>。</p>
+<h2>文件格式</h2>
+<p>该文件格式的设计目标是极度容易编写和理解。其解析器的源代码位于 <code>src/builder/tagsSpecParser.ts</code>。</p>
+<p>下面描述一下该文件的详细格式：</p>
+<h3>每两个标签之间用一个空行隔开</h3>
+<p>例如：</p>
+<pre><code>.NET Framework
+
+C#
+
+VB
+</code></pre>
+<p>定义了三个标签：<code>.NET Framework</code>，<code>C#</code>，和<code>VB</code>。</p>
+<h2>在标签后使用中文括号（<code>（</code>，<code>）</code>）可添加用正斜杠（<code>/</code>）划分的标签变种</h2>
+<p>例如：</p>
+<pre><code>C#（Windows/.NET Framework）
+
+VB（Windows）
+</code></pre>
+<p>定义了三个标签：</p>
+<ul>
+<li>标签<code>C#</code>有两个变种：<code>C#（Windows）</code>，<code>C#（.NET Framework）</code>。</li>
+<li>标签<code>VB</code>有一个变种：<code>VB（Windows）</code>。</li>
+</ul>
+<h2>在标签最后添加一个或多个中文感叹号（<code>！</code>）可以付给该标签优先级</h2>
+<p>感叹号越多，优先级越高。</p>
+<p>高优先级的关键词会在计算相似度的时候采用更高的权重。同时，当在某些字数有限制的场合，高优先级的标签会优先展现。</p>
+<p>例如：</p>
+<pre><code>C
+
+VB！
+
+C#（Windows/.NET Framework）！！
+</code></pre>
+<p>定义了三个标签：<code>C</code>，<code>VB</code>，和<code>C#</code>。其中C为标准优先度，VB为一级优先度，C#为二级优先度。</p>
+<h3>不用空行隔开的会变成该标签的解释</h3>
+<p>例如：</p>
+<pre><code>C#（Windows/.NET Framework）
+C#是微软推出的一种基于.NET框架的、面向对象的高级编程语言。
+
+VB（Windows）
+Visual Basic是由微软公司开发的包含环境的事件驱动编程语言。
+它源自于BASIC编程语言。
+</code></pre>
+<p>定义了两个标签：<code>C#</code>和<code>VB</code>。其中<code>C#</code>有一个解释项，<code>VB</code>有两个解释项。</p>
+<h3>解释项中可以用方括号插入对其他标签的引用</h3>
+<p>例如：</p>
+<pre><code>.NET Framework（Windows）
+.NET框架是由微软开发，一个致力于敏捷软件开发、快速应用开发、平台无关性和网络透明化的软件框架。
+
+C#（Windows/.NET Framework）
+C#是微软推出的一种基于【.NET Framework】的、面向对象的高级编程语言。
+</code></pre>
+<p>其中<code>C#</code>的第一个解释项附带了一个<code>.NET Framework</code>的引用。</p>
+<h3>在解释项前写一个加号可以将该解释项内引用的标签设置为前置标签</h3>
+<p>例如：</p>
+<pre><code>.NET Framework（Windows）
+.NET框架是由微软开发，一个致力于敏捷软件开发、快速应用开发、平台无关性和网络透明化的软件框架。
+
+C#（Windows/.NET Framework）
+C#是微软推出的一种基于.NET Framework的、面向对象的高级编程语言。
++需选择【.NET Framework】
+</code></pre>
+<p>其中<code>C#</code>的前置条件就是<code>.NET Framework</code>。</p>
+<p>需要注意的是，如果本标签和前置标签都有变种，则只会依赖对应的变种。</p>
+<p>例如：</p>
+<pre><code>.NET Framework（Windows）
+.NET框架是由微软开发，一个致力于敏捷软件开发、快速应用开发、平台无关性和网络透明化的软件框架。
+
+C#（Windows/.NET Framework）
+C#是微软推出的一种基于.NET Framework的、面向对象的高级编程语言。
++需选择【.NET Framework】
+</code></pre>
+<p>在这个情况下，如果选择了<code>C#（Windows）</code>，则只需要选择前置<code>.NET Framework</code>的对应变种<code>.NET Framework（Windows）</code>。正是因此，如果一个标签和其前置都有变种的话，那么其变种必须是其前置变种的子集。当然，如果一个标签和它的前置其中任意一个没有变种的话，则没有这个限制。</p>
+<h3>在一个解释项前添加一个等号可以将该解释项变为用中文逗号（<code>，</code>）分隔的同义词列表</h3>
+<p>例如：</p>
+<pre><code>.NET Framework（Windows）
+.NET框架是由微软开发，一个致力于敏捷软件开发、快速应用开发、平台无关性和网络透明化的软件框架。
+=.NET框架，.NET
+</code></pre>
+<p>其中为<code>.NET Framework</code>这个标签添加了两个同义词：<code>.NET框架</code>和<code>.NET</code>。同时，<code>.NET框架，.NET</code>这一句话将不再作为<code>.NET Framework</code>的解释项。</p>
+<p><strong>请注意：同义词仅使用于搜索时将用户输入的标签转换为晶体图书馆标签。同义词并不是真的标签。</strong></p>

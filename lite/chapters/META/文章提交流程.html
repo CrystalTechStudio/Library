@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta name="keywords" content="">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" type="image/png" href="../../../favicon.png">
+  <title>META 文章提交流程 - 晶体图书馆（精简版）</title>
+  <link rel="canonical" href="https://crystaltechstudio.github.io/Library/lite/chapters/META/文章提交流程.html" />
+  <script>
+    if (!(/bot|google|baidu|bing|msn|teoma|slurp|yandex/i.test(navigator.userAgent))) {
+      if (window.localStorage.getItem('lite') !== 'true') {
+        setTimeout(() => {
+          window.location.href = '/#/chapter/META/文章提交流程.html';
+        }, 1000);
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <header>
+    <aside>
+      <p>您正在访问适用于不支持 JavaScript 的浏览器的晶体图书馆精简版。精简版会缺少大量功能，如果您在使用现代浏览器，请<a href="../../../#/chapter/META/文章提交流程.html">点此前往晶体图书馆完整版</a>。</p>
+    </aside>
+    <nav>
+      <p>
+        <a href="../../chapters/META/简易-Markdown-教程.html">上一章</a>
+        <a href="../../entry.html">返回书目选择</a>
+        <placeholder-next/>
+      </p>
+    </nav>
+  </header>
+  <main>
+    <aside><placeholder-authors/></aside>
+    <article>
+      <h1>文章提交流程</h1>
+<p>在提交前，请首先确保你的名字写在文章的标题前。假如你是李华，请这样写：</p>
+<pre><code class="language-markdown">作者：李华
+
+# 买衬衫
+衬衫的价格为：九镑十五便士。
+</code></pre>
+<p>作者注明后，就可以提交了。</p>
+<p>将你的文章发布到晶体图书馆需要在 github.com 发起一个 Merge Request。因此，你首先需要确保你已经登录了 github.com。如果你没有 github.com 账号，请到<a href="https://github.com/signup">这里</a>注册一个。</p>
+<p>这之后，进入chapters文件夹：</p>
+<p>点击上方<code>Add file</code>，然后点击 <code>Upload files</code>。</p>
+<p>此时，网页会说“Forking in progress”。请耐心等候片刻。</p>
+<p>Fork 结束后，你需要把你的书目的文件夹复制进编辑器中。</p>
+<p><strong>请注意，你的文件名必须是这个格式：编号、空格、短横（<code>-</code>）、空格、名字、<code>.md</code>！</strong> 请务必再次注意，短横（<code>-</code>）前后有空格，文件结尾必须是 <code>.md</code>。如果稍有写错，这个文件将无法被晶体图书馆网页构建脚本正确读取。</p>
+<p>这之后，你需要开启一个合并请求，即请求墨凌将你编写的文章加入到晶体图书馆中。</p>
+<p>这样，一个 Merge Request 就会被创建。你现在只需要等待就好了。</p>
+
+    </article>
+  </main>
+  <footer>
+    <nav>
+      <p>
+        <a href="../../chapters/META/简易-Markdown-教程.html">上一章</a>
+        <a href="../../">返回书目选择</a>
+        <placeholder-next/>
+      </p>
+    </nav>
+    <aside>
+      <h1>转载须知</h1>
+      <p>晶体图书馆内所有文章均以 <a class="regular" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> 协议发布。转载时请注明以下信息：</p>
+      <pre class="wrapping">
+        <code>本文内容摘自晶体图书馆（https://crystaltechstudio.github.io/Library）。<placeholder-authors/>本文以 CC BY-NC-ND 4.0 协议发布，转载请注明上述所有信息。</code>
+      </pre>
+    </aside>
+  </footer>
+</body>
+
+</html>
