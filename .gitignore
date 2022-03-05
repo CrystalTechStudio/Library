@@ -1,0 +1,7 @@
+/dist
+/ts-out
+/node_modules
+/static/bundle.js
+*.backup
+# Local Netlify folder
+.netlify
