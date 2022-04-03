@@ -2,7 +2,7 @@ import { stylePreviewArticle } from '../constant/stylePreviewArticle';
 import { newContent, Side } from '../control/contentControl';
 import { Layout } from '../control/layoutControl';
 import { processElements } from '../control/processElements';
-import { animation, BooleanSetting, developerMode, earlyAccess, EnumSetting, fontFamily, gestureSwitchChapter, lite, showAbandonedChapters, useComments } from '../data/settings';
+import { animation, BooleanSetting, developerMode, earlyAccess, EnumSetting, fontFamily, gestureSwitchChapter, lite, showAbandonedChapters } from '../data/settings';
 import { ItemDecoration, ItemHandle, Menu } from '../Menu';
 
 export class EnumSettingMenu extends Menu {
@@ -37,7 +37,6 @@ export class SettingsMenu extends Menu {
 
     this.addBooleanSetting('使用动画', animation);
     this.addBooleanSetting('显示编写中章节', earlyAccess);
-    this.addBooleanSetting('显示评论', useComments);
     this.addBooleanSetting('手势切换章节（仅限手机）', gestureSwitchChapter);
     this.addEnumSetting('字体', fontFamily, true);
     this.addBooleanSetting('开发人员模式', developerMode);

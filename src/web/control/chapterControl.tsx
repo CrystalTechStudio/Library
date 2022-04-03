@@ -217,7 +217,7 @@ function addTagInfoBlock(content: Content, chapter: Chapter) {
       initElement: (
         <div>
           <h3>本文标签缺失</h3>
-          <p>本文目前没有标签。如果你愿意帮忙打标签，请<a className='regular' href={ chapterHref('META/协助打标签.html') }>至此查看协助打标签的方式</a>。</p>
+          <p>本文目前没有标签。</p>
         </div>
       ),
       side: ContentBlockSide.LEFT,
@@ -354,12 +354,12 @@ function maybeAddEarlyAccessWarning(chapterCtx: ChapterContext, content: Content
 }
 
 function maybeAddNonEroticWarning(chapterCtx: ChapterContext, content: Content) {
-  if (chapterCtx.chapter.htmlRelativePath.startsWith('小作品/')) {
+  if (chapterCtx.chapter.htmlRelativePath.startsWith('短篇文章/')) {
     content.addBlock({
       initElement: (
         <div>
           <h1>本文是小作品</h1>
-          <p>请注意，本文是小作品。小作品是任由作者发挥的投稿类型，文章通常为生草文，而不一定色情。</p>
+          <p>请注意，本文是短篇文章。短篇文章是任由作者发挥的投稿类型，可能是对于某些问题的解决方案等。</p>
         </div>
       ),
       style: ContentBlockStyle.WARNING,
