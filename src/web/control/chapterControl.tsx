@@ -217,7 +217,7 @@ function addTagInfoBlock(content: Content, chapter: Chapter) {
       initElement: (
         <div>
           <h3>本文标签缺失</h3>
-          <p>本文目前没有标签。如果你愿意帮忙打标签，请<a className='regular' href={ chapterHref('META/协助打标签.html') }>至此查看协助打标签的方式</a>。</p>
+          <p>本文目前没有标签。</p>
         </div>
       ),
       side: ContentBlockSide.LEFT,
@@ -244,7 +244,7 @@ function loadChapter(
 
   maybeAddEarlyAccessWarning(chapterCtx, content);
   maybeAddAbandonedWarning(chapterCtx, content);
-  maybeAddNonEroticWarning(chapterCtx, content);
+  maybeAddDevelopDocWarning(chapterCtx, content);
   const loadingBlock = addPreloaderBlock(content);
 
   setLayout(Layout.MAIN);
@@ -353,17 +353,27 @@ function maybeAddEarlyAccessWarning(chapterCtx: ChapterContext, content: Content
   }
 }
 
-function maybeAddNonEroticWarning(chapterCtx: ChapterContext, content: Content) {
-  if (chapterCtx.chapter.htmlRelativePath.startsWith('小作品/')) {
+function maybeAddDevelopDocWarning(chapterCtx: ChapterContext, content: Content) {
+  if (chapterCtx.chapter.htmlRelativePath.startsWith('开发文档留档/')) {
     content.addBlock({
       initElement: (
         <div>
-          <h1>本文是小作品</h1>
-          <p>请注意，本文是小作品。小作品是任由作者发挥的投稿类型，文章通常为生草文，而不一定色情。</p>
+          <h1>本文是开发文档的留档</h1>
+          <p>请注意，留档为原开发文档的镜像，可能无法及时更新，请以官方文档为主。</p>
         </div>
       ),
       style: ContentBlockStyle.WARNING,
     });
+    if (chapterCtx.chapter.translated) {
+      content.addBlock({
+        initElement: (
+          <div>
+            <p>该文档已基于原文档的基础翻译完成。</p>
+          </div>
+        ),
+        style: ContentBlockStyle.WARNING,
+      });
+    }
   }
 }
 

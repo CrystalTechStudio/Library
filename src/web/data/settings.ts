@@ -83,7 +83,7 @@ animation.event.on(value => {
 });
 export const warning = new BooleanSetting('warning', false);
 export const earlyAccess = new BooleanSetting('earlyAccess', false);
-export const useComments = new BooleanSetting('useComments', true);
+export const useComments = new BooleanSetting('useComments', false);
 export const gestureSwitchChapter = new BooleanSetting('gestureSwitchChapter', true);
 // https://github.com/zenozeng/fonts.css
 const fontFamilyCssValues = [
