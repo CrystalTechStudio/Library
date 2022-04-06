@@ -1391,7 +1391,8 @@ exports.stylePreviewArticle = `<h1>测试用样例文本</h1>
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.thanks = void 0;
 exports.thanks = [
-    { name: '', link: '' },
+    { name: 'Crystal-Moling', link: 'https://github.com/Crystal-Moling' },
+    { name: 'justcurse', link: 'https://github.com/justcurse' },
 ].sort(() => Math.random() - 0.5);
 
 },{}],19:[function(require,module,exports){
@@ -1817,10 +1818,7 @@ function addTagInfoBlock(content, chapter) {
         content.addBlock({
             initElement: ((0, _e_1.$e)("div", null,
                 (0, _e_1.$e)("h3", null, "\u672C\u6587\u6807\u7B7E\u7F3A\u5931"),
-                (0, _e_1.$e)("p", null,
-                    "\u672C\u6587\u76EE\u524D\u6CA1\u6709\u6807\u7B7E\u3002\u5982\u679C\u4F60\u613F\u610F\u5E2E\u5FD9\u6253\u6807\u7B7E\uFF0C\u8BF7",
-                    (0, _e_1.$e)("a", { className: 'regular', href: (0, hrefs_1.chapterHref)('META/协助打标签.html') }, "\u81F3\u6B64\u67E5\u770B\u534F\u52A9\u6253\u6807\u7B7E\u7684\u65B9\u5F0F"),
-                    "\u3002"))),
+                (0, _e_1.$e)("p", null, "\u672C\u6587\u76EE\u524D\u6CA1\u6709\u6807\u7B7E\u3002"))),
             side: contentControl_1.ContentBlockSide.LEFT,
         });
     }
@@ -1836,7 +1834,7 @@ function loadChapter(chapterHtmlRelativePath, selection, side = contentControl_1
     const content = (0, contentControl_1.newContent)(side);
     maybeAddEarlyAccessWarning(chapterCtx, content);
     maybeAddAbandonedWarning(chapterCtx, content);
-    maybeAddNonEroticWarning(chapterCtx, content);
+    maybeAddDevelopDocWarning(chapterCtx, content);
     const loadingBlock = (0, preloaderBlock_1.addPreloaderBlock)(content);
     (0, layoutControl_1.setLayout)(layoutControl_1.Layout.MAIN);
     function loadPrevChapter() {
@@ -1929,14 +1927,21 @@ function maybeAddEarlyAccessWarning(chapterCtx, content) {
         });
     }
 }
-function maybeAddNonEroticWarning(chapterCtx, content) {
-    if (chapterCtx.chapter.htmlRelativePath.startsWith('小作品/')) {
+function maybeAddDevelopDocWarning(chapterCtx, content) {
+    if (chapterCtx.chapter.htmlRelativePath.startsWith('开发文档留档/')) {
         content.addBlock({
             initElement: ((0, _e_1.$e)("div", null,
-                (0, _e_1.$e)("h1", null, "\u672C\u6587\u662F\u5C0F\u4F5C\u54C1"),
-                (0, _e_1.$e)("p", null, "\u8BF7\u6CE8\u610F\uFF0C\u672C\u6587\u662F\u5C0F\u4F5C\u54C1\u3002\u5C0F\u4F5C\u54C1\u662F\u4EFB\u7531\u4F5C\u8005\u53D1\u6325\u7684\u6295\u7A3F\u7C7B\u578B\uFF0C\u6587\u7AE0\u901A\u5E38\u4E3A\u751F\u8349\u6587\uFF0C\u800C\u4E0D\u4E00\u5B9A\u8272\u60C5\u3002"))),
+                (0, _e_1.$e)("h1", null, "\u672C\u6587\u662F\u5F00\u53D1\u6587\u6863\u7684\u7559\u6863"),
+                (0, _e_1.$e)("p", null, "\u8BF7\u6CE8\u610F\uFF0C\u7559\u6863\u4E3A\u539F\u5F00\u53D1\u6587\u6863\u7684\u955C\u50CF\uFF0C\u53EF\u80FD\u65E0\u6CD5\u53CA\u65F6\u66F4\u65B0\uFF0C\u8BF7\u4EE5\u5B98\u65B9\u6587\u6863\u4E3A\u4E3B\u3002"))),
             style: contentControl_1.ContentBlockStyle.WARNING,
         });
+        if (chapterCtx.chapter.translated) {
+            content.addBlock({
+                initElement: ((0, _e_1.$e)("div", null,
+                    (0, _e_1.$e)("p", null, "\u8BE5\u6587\u6863\u5DF2\u57FA\u4E8E\u539F\u6587\u6863\u7684\u57FA\u7840\u7FFB\u8BD1\u5B8C\u6210\u3002"))),
+                style: contentControl_1.ContentBlockStyle.WARNING,
+            });
+        }
     }
 }
 function addPageSwitcherBlock(chapterCtx, postMainBlock) {
@@ -2109,7 +2114,6 @@ exports.loadRecentMentions = exports.loadRecentComments = exports.loadChapterCom
 const messages_1 = require("../constant/messages");
 const AutoCache_1 = require("../data/AutoCache");
 const hrefs_1 = require("../data/hrefs");
-const settings_1 = require("../data/settings");
 const DebugLogger_1 = require("../DebugLogger");
 const hs_1 = require("../hs");
 const DOM_1 = require("../util/DOM");
@@ -2359,9 +2363,9 @@ function promptComment(pageName, preFilled) {
 exports.promptComment = promptComment;
 const chapterCommentsCache = new AutoCache_1.AutoCache(backendControl_1.fetchGetChapterComments, new DebugLogger_1.DebugLogger('Chapter Comments Cache'));
 function loadChapterComments(chapterCtx, content) {
-    if (settings_1.useComments.getValue() === false) {
-        return;
-    }
+    //if (useComments.getValue() === false) {
+    return;
+    //}
     let block = null;
     const pageName = chapterCtx.chapter.htmlRelativePath;
     function load() {
@@ -2393,7 +2397,7 @@ function loadRecentMentions(content, token) {
 }
 exports.loadRecentMentions = loadRecentMentions;
 
-},{"../DebugLogger":9,"../constant/messages":13,"../data/AutoCache":39,"../data/hrefs":42,"../data/settings":44,"../hs":45,"../util/DOM":62,"../util/formatRelativePath":65,"../util/formatTime":66,"../util/padName":68,"./backendControl":21,"./menuControl":28,"./modalControl":30,"./userControl":38}],24:[function(require,module,exports){
+},{"../DebugLogger":9,"../constant/messages":13,"../data/AutoCache":39,"../data/hrefs":42,"../hs":45,"../util/DOM":62,"../util/formatRelativePath":65,"../util/formatTime":66,"../util/padName":68,"./backendControl":21,"./menuControl":28,"./modalControl":30,"./userControl":38}],24:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ContentBlock = exports.ContentBlockSide = exports.Content = exports.ContentBlockStyle = exports.newContent = exports.contentChangeEvent = exports.contentScrollEvent = exports.focus = exports.getCurrentContent = exports.Side = void 0;
@@ -4332,7 +4336,7 @@ exports.animation.event.on(value => {
 });
 exports.warning = new BooleanSetting('warning', false);
 exports.earlyAccess = new BooleanSetting('earlyAccess', false);
-exports.useComments = new BooleanSetting('useComments', true);
+exports.useComments = new BooleanSetting('useComments', false);
 exports.gestureSwitchChapter = new BooleanSetting('gestureSwitchChapter', true);
 // https://github.com/zenozeng/fonts.css
 const fontFamilyCssValues = [
@@ -4814,7 +4818,6 @@ class SettingsMenu extends Menu_1.Menu {
         super(urlBase);
         this.addBooleanSetting('使用动画', settings_1.animation);
         this.addBooleanSetting('显示编写中章节', settings_1.earlyAccess);
-        this.addBooleanSetting('显示评论', settings_1.useComments);
         this.addBooleanSetting('手势切换章节（仅限手机）', settings_1.gestureSwitchChapter);
         this.addEnumSetting('字体', settings_1.fontFamily, true);
         this.addBooleanSetting('开发人员模式', settings_1.developerMode);
