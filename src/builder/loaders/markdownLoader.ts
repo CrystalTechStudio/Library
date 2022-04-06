@@ -12,6 +12,7 @@ const markdownFlags = new Map<string, ChapterFlags>([
   ['# 编写中', 'isEarlyAccess'],
   ['# 隐藏', 'hidden'],
   ['# 已弃坑', 'abandoned'],
+  ['# 已翻译', 'translated'],
 ]);
 
 function readMarkdownFlags(markdown: string): [string, ChapterFlagsMapped] {

@@ -317,9 +317,9 @@ const chapterCommentsCache = new AutoCache<string, Array<CommentData>>(
   new DebugLogger('Chapter Comments Cache'),
 );
 export function loadChapterComments(chapterCtx: ChapterContext, content: Content) {
-  if (useComments.getValue() === false) {
+  //if (useComments.getValue() === false) {
     return;
-  }
+  //}
   let block: ContentBlock | null = null;
   const pageName = chapterCtx.chapter.htmlRelativePath;
   function load() {

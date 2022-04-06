@@ -18,6 +18,7 @@ export interface ChapterFlagsMapped {
   isEarlyAccess?: true;
   hidden?: true;
   abandoned?: true;
+  translated?: true;
 }
 
 export type ChapterFlags = keyof ChapterFlagsMapped;

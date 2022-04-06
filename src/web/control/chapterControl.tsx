@@ -244,7 +244,7 @@ function loadChapter(
 
   maybeAddEarlyAccessWarning(chapterCtx, content);
   maybeAddAbandonedWarning(chapterCtx, content);
-  maybeAddNonEroticWarning(chapterCtx, content);
+  maybeAddDevelopDocWarning(chapterCtx, content);
   const loadingBlock = addPreloaderBlock(content);
 
   setLayout(Layout.MAIN);
@@ -353,17 +353,27 @@ function maybeAddEarlyAccessWarning(chapterCtx: ChapterContext, content: Content
   }
 }
 
-function maybeAddNonEroticWarning(chapterCtx: ChapterContext, content: Content) {
-  if (chapterCtx.chapter.htmlRelativePath.startsWith('短篇文章/')) {
+function maybeAddDevelopDocWarning(chapterCtx: ChapterContext, content: Content) {
+  if (chapterCtx.chapter.htmlRelativePath.startsWith('开发文档留档/')) {
     content.addBlock({
       initElement: (
         <div>
-          <h1>本文是小作品</h1>
-          <p>请注意，本文是短篇文章。短篇文章是任由作者发挥的投稿类型，可能是对于某些问题的解决方案等。</p>
+          <h1>本文是开发文档的留档</h1>
+          <p>请注意，留档为原开发文档的镜像，可能无法及时更新，请以官方文档为主。</p>
         </div>
       ),
       style: ContentBlockStyle.WARNING,
     });
+    if (chapterCtx.chapter.translated) {
+      content.addBlock({
+        initElement: (
+          <div>
+            <p>该文档已基于原文档的基础翻译完成。</p>
+          </div>
+        ),
+        style: ContentBlockStyle.WARNING,
+      });
+    }
   }
 }
 
